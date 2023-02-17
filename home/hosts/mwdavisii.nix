@@ -7,6 +7,7 @@
     modules = {
       dev = {
         cc.enable = true;
+        rust.enable = true;
       };
       shell = {
         gnupg = {

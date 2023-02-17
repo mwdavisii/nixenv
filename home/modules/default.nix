@@ -1,5 +1,5 @@
 { ... }:
 
 {
-  imports = [ ./app ./dev ./shell ./theme ];
+  imports = [ ./app ./common ./dev ./shell ./theme ];
 }
