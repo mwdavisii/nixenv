@@ -66,7 +66,7 @@
       );
 
       homeManagerConfigurations = mapAttrs' mkHome {
-        eden = { };
+        mwdavisii = { };
       };
 
       nixosConfigurations = mapAttrs' mkSystem {
