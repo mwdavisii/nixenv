@@ -1,0 +1,52 @@
+name: Build
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "**.nix"
+      - "flake.lock"
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-20.04
+            target: pride
+          - os: ubuntu-20.04
+            target: sloth
+          - os: ubuntu-20.04
+            target: eden
+          - os: macos-latest
+            target: theman
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install nix
+        uses: cachix/install-nix-action@v18
+        with:
+          extra_nix_config: |
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup cachix
+        uses: cachix/cachix-action@v11
+        with:
+          name: edeneast
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+
+      - name: Build target
+        run: |
+          set -o pipefail
+          nix build .#top.${{ matrix.target }} --fallback --show-trace -v --log-format raw > >(tee /tmp/nix-build-out.log) 2> >(tee /tmp/nix-build-err.log >&2)
+
+      - name: Output build failure
+        if: failure()
+        run: |
+          drv=$(grep "For full logs, run" /tmp/nix-build-err.log | grep -oE "/nix/store/.*.drv")
+          nix log $drv
+          echo $drv
+          exit 1
