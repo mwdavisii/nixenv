@@ -31,7 +31,7 @@ in
     environment.systemPackages = with pkgs; [
       pamixer
       firefox
-      chrome
+      chromium
       vscode
     ];
 
