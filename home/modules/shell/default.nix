@@ -1,4 +1,4 @@
-/* { ... }:
+ { ... }:
 
 {
   imports = [
@@ -27,7 +27,7 @@
     ./zsh.nix
   ];
 }
-*/
+/*
 { lib, ... }:
 
 with builtins;
@@ -42,3 +42,4 @@ with lib;
     in
     map' dirs ++ map' files;
 }
+*/
