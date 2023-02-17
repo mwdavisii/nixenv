@@ -94,7 +94,6 @@ in
         tree-sitter-typescript
         tree-sitter-vim
         tree-sitter-yaml
-        tree-sitter-toml
       ];
       parseName = x: removeSuffix "-grammar" (removePrefix "tree-sitter-" (getName x));
       # parsers = listToAttrs (map

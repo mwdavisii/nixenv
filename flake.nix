@@ -14,7 +14,7 @@
     darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     nur.url = "github:nix-community/nur";
-    #nur.inputs.nixpkgs.follows = "nixpkgs";
+    nur.inputs.nixpkgs.follows = "nixpkgs";
 
     flake-compat.url = "github:edolstra/flake-compat";
     flake-compat.flake = false;

@@ -67,7 +67,7 @@ in
       # shell.gnupg.enable = true;
       shell.neovim.enable = true;
       shell.nushell.enable = true;
-      shell.ssh.enable = true;
+      # shell.ssh.enable = true;
       shell.starship.enable = true;
       shell.xdg.enable = true;
     };
