@@ -12,6 +12,9 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/d981e00e-2b47-4b79-bfaf-7651a4c1da22";
@@ -40,4 +43,10 @@
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   # high-resolution display
   hardware.video.hidpi.enable = lib.mkDefault true;
+
+  services.xserver.enable = true;
+  services.xserver = {
+    layout = "us";
+    xkbVariant = "";
+  };
 }

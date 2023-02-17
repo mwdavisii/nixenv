@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  imports = [ ./hardware.nix ];
+  imports = [ ./machine-specific.nix ];
 
   networking.interfaces.wlp3s0.useDHCP = true;
 

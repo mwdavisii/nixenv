@@ -63,7 +63,7 @@ rec {
       # TODO: Note sure where this should go
       home.sessionPath = [ "$HOME/.local/nyx/bin" "$XDG_BIN_HOME" ];
 
-      home.stateVersion = "20.09";
+      home.stateVersion = "22.11";
     };
 
   # Top level derivation for just home-manager
@@ -160,7 +160,7 @@ rec {
           )
           (
             { ... }: {
-              system.stateVersion = "21.05";
+              system.stateVersion = "22.11";
             }
           )
           (inputs.home-manager.nixosModules.home-manager)
