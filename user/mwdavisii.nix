@@ -2,5 +2,5 @@
   name = "mwdavisii";
   email = "mwdavisii@gmail.com";
   signingKey = "5A038CEFD458DB47A6135B3F8316DECECB1A3F10";
-  #hashedPassword = "$6$nF.UDyrpHmh6M$yKCw56auQ7Dm1FfvmQg6y3Y59mWsoiHJyAYhqF9e8nKjfeKwUoFocwHhogKUTq.A3hVe9S.smv7u1NLV/yPTd0";
+  hashedPassword = "$6$6qpW6C/.LdmV5LJi$exVm33xvUxYK03PCNozF1QaAEJJhz1gfDc2/OaZI.XOZtneJEUuZyl58m/5.wLjO2p3RShYUF5nOUIqb.TbPJ.";
 }
