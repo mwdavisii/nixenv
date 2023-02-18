@@ -16,6 +16,13 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
+  nix.package = pkgs.nixUnstable;
+	nix.extraOptions = "experimental-features = nix-command flakes";
+  services.openssh.enable = true;
+	services.openssh.passwordAuthentication = true;
+	services.openssh.permitRootLogin = "yes";
+
+
   users.users."root".hashedPassword = "$6$6qpW6C/.LdmV5LJi$exVm33xvUxYK03PCNozF1QaAEJJhz1gfDc2/OaZI.XOZtneJEUuZyl58m/5.wLjO2p3RShYUF5nOUIqb.TbPJ.";
   users.users."root".initialHashedPassword = "$6$6qpW6C/.LdmV5LJi$exVm33xvUxYK03PCNozF1QaAEJJhz1gfDc2/OaZI.XOZtneJEUuZyl58m/5.wLjO2p3RShYUF5nOUIqb.TbPJ.";
 
