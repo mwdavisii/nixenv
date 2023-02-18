@@ -8,8 +8,8 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
     users.users.root = {
-    users.users."root".hashedPassword = config.users.users."root".initialHashedPassword;
-    users.users."root".initialHashedPassword = config.users.users."root".initialHashedPassword;
+    users.users."root".hashedPassword = "$6$6qpW6C/.LdmV5LJi$exVm33xvUxYK03PCNozF1QaAEJJhz1gfDc2/OaZI.XOZtneJEUuZyl58m/5.wLjO2p3RShYUF5nOUIqb.TbPJ.";
+    users.users."root".initialHashedPassword = "$6$6qpW6C/.LdmV5LJi$exVm33xvUxYK03PCNozF1QaAEJJhz1gfDc2/OaZI.XOZtneJEUuZyl58m/5.wLjO2p3RShYUF5nOUIqb.TbPJ.";
     # Otherwise WSL fails to login as root with "initgroups failed 5"
     extraGroups = [ "root" ];
   };
