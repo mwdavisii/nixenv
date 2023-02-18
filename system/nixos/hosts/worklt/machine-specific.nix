@@ -7,13 +7,7 @@
   imports =
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
-    users.users.root = {
-    users.users."root".hashedPassword = "$6$6qpW6C/.LdmV5LJi$exVm33xvUxYK03PCNozF1QaAEJJhz1gfDc2/OaZI.XOZtneJEUuZyl58m/5.wLjO2p3RShYUF5nOUIqb.TbPJ.";
-    users.users."root".initialHashedPassword = "$6$6qpW6C/.LdmV5LJi$exVm33xvUxYK03PCNozF1QaAEJJhz1gfDc2/OaZI.XOZtneJEUuZyl58m/5.wLjO2p3RShYUF5nOUIqb.TbPJ.";
-    # Otherwise WSL fails to login as root with "initgroups failed 5"
-    extraGroups = [ "root" ];
-  };
-
+  
   boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
@@ -21,6 +15,10 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
+
+  users.users."root".hashedPassword = "$6$6qpW6C/.LdmV5LJi$exVm33xvUxYK03PCNozF1QaAEJJhz1gfDc2/OaZI.XOZtneJEUuZyl58m/5.wLjO2p3RShYUF5nOUIqb.TbPJ.";
+  users.users."root".initialHashedPassword = "$6$6qpW6C/.LdmV5LJi$exVm33xvUxYK03PCNozF1QaAEJJhz1gfDc2/OaZI.XOZtneJEUuZyl58m/5.wLjO2p3RShYUF5nOUIqb.TbPJ.";
+
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/d981e00e-2b47-4b79-bfaf-7651a4c1da22";
