@@ -7,6 +7,12 @@
   imports =
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
+    users.users.root = {
+    users.users."root".hashedPassword = config.users.users."root".initialHashedPassword;
+    users.users."root".initialHashedPassword = config.users.users."root".initialHashedPassword;
+    # Otherwise WSL fails to login as root with "initgroups failed 5"
+    extraGroups = [ "root" ];
+  };
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
