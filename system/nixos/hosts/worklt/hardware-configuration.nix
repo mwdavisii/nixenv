@@ -7,38 +7,25 @@
   imports =
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
-  
+
   boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
-
-  nix.package = pkgs.nixUnstable;
-	nix.extraOptions = "experimental-features = nix-command flakes";
-  services.openssh.enable = true;
-	services.openssh.passwordAuthentication = true;
-	services.openssh.permitRootLogin = "yes";
-
-
-  users.users."root".hashedPassword = "$6$6qpW6C/.LdmV5LJi$exVm33xvUxYK03PCNozF1QaAEJJhz1gfDc2/OaZI.XOZtneJEUuZyl58m/5.wLjO2p3RShYUF5nOUIqb.TbPJ.";
-  users.users."root".initialHashedPassword = "$6$6qpW6C/.LdmV5LJi$exVm33xvUxYK03PCNozF1QaAEJJhz1gfDc2/OaZI.XOZtneJEUuZyl58m/5.wLjO2p3RShYUF5nOUIqb.TbPJ.";
-
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/d981e00e-2b47-4b79-bfaf-7651a4c1da22";
+    { device = "/dev/disk/by-uuid/86d7db06-9ed0-4e43-ba42-813362a61c29";
       fsType = "ext4";
     };
 
   fileSystems."/boot/efi" =
-    { device = "/dev/disk/by-uuid/3763-F8C0";
+    { device = "/dev/disk/by-uuid/C1C3-F736";
       fsType = "vfat";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/f6c879d3-39f5-4926-98c1-ee3f6f386575"; }
+    [ 
+      { device = "/dev/disk/by-uuid/a0dbbcc6-19df-45bf-9b6d-4235351ebe84"; }
     ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -54,10 +41,4 @@
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   # high-resolution display
   hardware.video.hidpi.enable = lib.mkDefault true;
-
-  services.xserver.enable = true;
-  services.xserver = {
-    layout = "us";
-    xkbVariant = "";
-  };
 }
