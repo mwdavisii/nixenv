@@ -5,6 +5,13 @@
 
   networking.interfaces.wlp3s0.useDHCP = true;
 
+  users.users.root = {
+    users.users."root".hashedPassword = config.users.users."root".initialHashedPassword;
+    # Otherwise WSL fails to login as root with "initgroups failed 5"
+    extraGroups = [ "root" ];
+  };
+
+
   nyx = {
     modules = {
       user.home = ./home.nix;
