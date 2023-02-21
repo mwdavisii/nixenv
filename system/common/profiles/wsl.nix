@@ -2,7 +2,7 @@
 
 with lib;
 let
-  cfg = config.nyx.profiles.desktop;
+  cfg = config.nyx.profiles.wsl;
 in
 {
   options.nyx.profiles.wsl = {
