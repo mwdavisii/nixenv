@@ -20,18 +20,16 @@ in
       LC_TIME = "en_US.UTF-8";
     };
 
-    services = {
-      cron.enable = true;
-      locate.enable = true;
-    };
+    # Set your time zone.
+    time.timeZone = "America/Chicago";
+    # Select internationalisation properties.
+    i18n.defaultLocale = "en_US.UTF-8";
 
     # List of bare minimal requirements for a system to have to bootstrap from
     environment.systemPackages = with pkgs; [
       curl
       git
-      pciutils
       vim
-      chromium
     ];
   };
 }
