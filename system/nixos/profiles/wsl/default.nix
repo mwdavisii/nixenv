@@ -10,11 +10,8 @@ let
 in
 {
   imports = [
-
-    "${modulesPath}/profiles/minimal.nix"
-    
     nixos-wsl.nixosModules.wsl
-    
+
   ];
   options.nyx.profiles.wsl = {
     laptop = mkOption {
