@@ -5,28 +5,20 @@ let
   cfg = config.nyx.modules.dev.rust;
 in
 {
-  options.nyx.modules.dev.rust = {
-    enable = mkEnableOption "rust configuration";
-    stableComponents = mkOption {
-      description = "Which stable components to add, such as rustc, clippy or cargo";
-      type = with types; listOf str;
-      default = [
-        "cargo"
-        "rustc"
-        "rust-src"
-        "rust-docs"
-        "rust-std"
-        "clippy-preview"
-        "rustfmt-preview"
-      ];
-    };
 
-    nightlyComponents = mkOption {
-      description = "Which nightly components to add, such as rustc, clippy or cargo";
-      type = with types; listOf str;
-      default = [ ];
-    };
-
+  enable = mkEnableOption "rust configuration";
+  stableComponents = mkOption {
+    description = "Which stable components to add, such as rustc, clippy or cargo";
+    type = with types; listOf str;
+    default = [
+      "cargo"
+      "rustc"
+      "rust-src"
+      "rust-docs"
+      "rust-std"
+      "clippy-preview"
+      "rustfmt-preview"
+    ];
     rust-analyzer = mkOption {
       description = "Whether to add rust-analyzer";
       type = types.bool;
@@ -42,7 +34,7 @@ in
     };
   };
 
-  config = mkIf cfg.enable {
+  config = {
     home = {
       packages = with pkgs; [
         (fenix.stable.withComponents cfg.stableComponents)

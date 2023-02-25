@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-programs.fzf = {
+programs.k9s = {
     enable = true;
   };
 }

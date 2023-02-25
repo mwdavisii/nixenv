@@ -1,7 +1,8 @@
 { config, pkgs, ... }:
 
+
 {
-programs.fzf = {
+programs.jq = {
     enable = true;
   };
 }

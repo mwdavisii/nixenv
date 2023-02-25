@@ -2,11 +2,11 @@
 
 with lib;
 let
-  cfg = config.nyx.profiles.desktop;
+  cfg = config.nyx.profiles.wsl;
 in
 {
-  options.nyx.profiles.desktop = {
-    enable = mkEnableOption "desktop profile";
+  options.nyx.profiles.wsl = {
+    enable = mkEnableOption "wsl profile";
   };
 
   config = mkIf cfg.enable {
@@ -25,10 +25,10 @@ in
     ];
 
     nyx.modules = {
-      app.alacritty.enable = true;
-      app.discord.enable = true;
-      app.firefox.enable = true;
-      app.wezterm.enable = true;
+      app.alacritty.enable = false;
+      app.discord.enable = false;
+      app.firefox.enable = false;
+      app.wezterm.enable = false;
     };
   };
 }

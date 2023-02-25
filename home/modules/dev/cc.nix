@@ -1,14 +1,6 @@
 { config, lib, pkgs, ... }:
 
-with lib;
-let cfg = config.nyx.modules.dev.cc;
-in
 {
-  options.nyx.modules.dev.cc = {
-    enable = mkEnableOption "c/c++ configuration";
-  };
-
-  config = mkIf cfg.enable {
     home.packages = with pkgs; [
       # clang compiler
       # clang
@@ -31,5 +23,4 @@ in
       # Faster build system to make
       ninja
     ];
-  };
 }

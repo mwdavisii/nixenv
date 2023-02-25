@@ -24,46 +24,11 @@ rec {
         (import ../home/profiles)
         (import config)
       ];
-
-      # For compatibility with nix-shell, nix-build, etc.
-      home.file.".nixpkgs".source = inputs.nixpkgs;
-      home.sessionVariables."NIX_PATH" =
-        "nixpkgs=$HOME/.nixpkgs\${NIX_PATH:+:}$NIX_PATH";
-
-      # Use the same Nix configuration for the user
-      xdg.configFile."nixpkgs/config.nix".source = ../nix/config.nix;
-
-      # Re-expose self and nixpkgs as flakes.
-      xdg.configFile."nix/registry.json".text = builtins.toJSON {
-        version = 2;
-        flakes =
-          let
-            toInput = input:
-              {
-                type = "path";
-                path = input.outPath;
-              } // (
-                filterAttrs
-                  (n: _: n == "lastModified" || n == "rev" || n == "revCount" || n == "narHash")
-                  input
-              );
-          in
-          [
-            {
-              from = { id = "nyx"; type = "indirect"; };
-              to = toInput inputs.self;
-            }
-            {
-              from = { id = "nixpkgs"; type = "indirect"; };
-              to = toInput inputs.nixpkgs;
-            }
-          ];
-      };
-
-      # TODO: Note sure where this should go
-      home.sessionPath = [ "$HOME/.local/nyx/bin" "$XDG_BIN_HOME" ];
-
-      home.stateVersion = "22.11";
+        programs.home-manager.enable = true;
+        home.username = "mwdavisii";
+        home.stateVersion = "23.05";
+        home.file.".bashrc".source = ../dotfiles/.bashrc;
+        home.file.".aws/config".source = ../dotfiles/.aws/config;
     };
 
   # Top level derivation for just home-manager

@@ -20,18 +20,5 @@ in
 
   config = mkIf cfg.enable {
     home.packages = mkIf (cfg.package != null) [ cfg.package ];
-    xdg.configFile."wezterm".source = ../../../config/.config/wezterm;
-    xdg.dataFile."wezterm/nyx.lua".text =
-      let
-        fontText =
-          if cfg.fontSize != null then ''
-            font_size = ${toString cfg.fontSize},
-          '' else "";
-      in
-      ''
-        return {
-          ${fontText}
-        }
-      '';
   };
 }
