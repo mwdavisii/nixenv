@@ -8,6 +8,10 @@ let
   deList = [ "gnome" "plasma5" ];
 in
 {
+  imports = [
+    ../common.nix
+
+  ];
   options.nyx.profiles.desktop = {
     laptop = mkOption {
       description = "Enable features for a laptop (trackpad, battery, etc...)";

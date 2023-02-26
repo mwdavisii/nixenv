@@ -35,7 +35,7 @@
   outputs = { self, ... }@inputs:
     with self.lib;
     let
-      systems = [ "x86_64-linux" "x86_64-darwin" ];
+      systems = [ "x86_64-linux" ];
       foreachSystem = genAttrs systems;
       pkgsBySystem = foreachSystem (
         system:
@@ -56,10 +56,6 @@
       nixosConfigurations = mapAttrs' mkSystem {
         worklt = { };
         wsl = { };
-      };
-
-      darwinConfigurations = mapAttrs' mkDarwin {
-        theman = { user = "work"; };
       };
 
       # Convenience output that aggregates the outputs for home, nixos, and darwin configurations.

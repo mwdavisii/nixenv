@@ -11,6 +11,7 @@ in
 {
   imports = [
     nixos-wsl.nixosModules.wsl
+    ../common.nix
 
   ];
   options.nyx.profiles.wsl = {
