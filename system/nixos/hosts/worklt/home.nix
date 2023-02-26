@@ -9,16 +9,6 @@
 
   nyx = {
     modules = {
-      app = {
-        alacritty.fontSize = 8;
-        wezterm.fontSize = 14;
-        obs.enable = true;
-      };
-      dev = {
-        cc.enable = true;
-        nix.enable = true;
-        node.enable = true;
-      };
       shell = {
         direnv.enable = true;
         gnupg = {

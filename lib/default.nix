@@ -65,7 +65,6 @@ rec {
 
             nixpkgs = {
               config = import ../nix/config.nix;
-              overlays = inputs.self.overlays."${system}";
             };
           }
         ];
@@ -146,7 +145,6 @@ rec {
           )
           (import ../system/common/modules)
           (import ../system/common/profiles)
-          (import ../system/nixos/modules)
           (import ../system/nixos/profiles)
           (import (strToPath config ../system/nixos/hosts))
         ];

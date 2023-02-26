@@ -6,7 +6,7 @@ let
   dataHome = config.xdg.dataHome;
 in
 {
-  extraPackages = mkOption {
+  /*extraPackages = mkOption {
     description = "List of extra packages to be installed";
     type = with types; listOf package;
     default = with pkgs.python39Packages; [
@@ -18,10 +18,11 @@ in
       setuptools
     ];
   };
+  */
   config = {
     home.packages = with pkgs; [
       python39
       pipenv
-    ] ++ cfg.extraPackages;
+    ]; #++ cfg.extraPackages;
   };
 }

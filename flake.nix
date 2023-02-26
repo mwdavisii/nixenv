@@ -42,29 +42,13 @@
         import inputs.nixpkgs {
           inherit system;
           config = import ./nix/config.nix;
-          overlays = self.overlays."${system}";
         }
       );
     in
     rec {
       inherit pkgsBySystem;
       lib = import ./lib { inherit inputs; } // inputs.nixpkgs.lib;
-
-      devShell = foreachSystem (system: import ./shell.nix { pkgs = pkgsBySystem."${system}"; });
-      packages = foreachSystem (system: import ./nix/pkgs self system);
-      overlay = foreachSystem (system: _final: _prev: self.packages."${system}");
-      overlays = foreachSystem (
-        system: with inputs; let
-          ovs = attrValues (import ./nix/overlays self);
-        in
-        [
-          (self.overlay."${system}")
-          (nur.overlay)
-          (fenix.overlays.default)
-          # (_:_: { inherit (eww.packages."${system}") eww; })
-        ] ++ ovs
-      );
-
+      
       homeManagerConfigurations = mapAttrs' mkHome {
         mwdavisii = { };
       };
