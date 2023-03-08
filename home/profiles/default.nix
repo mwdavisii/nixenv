@@ -1,7 +1,7 @@
 { lib, ... }:
 
 {
-  imports = [ ./common.nix ./desktop.nix ./wsl.nix ];
+  imports = [ ./shared.nix ./desktop.nix];
 
   config.nyx.profiles.common.enable = lib.mkDefault false;
 }

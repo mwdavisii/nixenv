@@ -143,8 +143,6 @@ rec {
               };
             }
           )
-          (import ../system/common/modules)
-          (import ../system/common/profiles)
           (import ../system/nixos/profiles)
           (import (strToPath config ../system/nixos/hosts))
         ];

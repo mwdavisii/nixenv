@@ -10,24 +10,11 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    darwin.url = "github:lnl7/nix-darwin/master";
-    darwin.inputs.nixpkgs.follows = "nixpkgs";
-
-    nur.url = "github:nix-community/nur";
-    #nur.inputs.nixpkgs.follows = "nixpkgs";
-
     flake-compat.url = "github:edolstra/flake-compat";
     flake-compat.flake = false;
 
-    # Overlays
-    fenix.url = "github:nix-community/fenix";
-    fenix.inputs.nixpkgs.follows = "nixpkgs";
-
     neovim-flake.url = "github:neovim/neovim?dir=contrib";
     neovim-flake.inputs.nixpkgs.follows = "nixpkgs";
-
-    nushell-src.url = "github:nushell/nushell";
-    nushell-src.flake = false;
 
     # eww.url = "github:elkowar/eww";
   };
@@ -54,7 +41,7 @@
       };
 
       nixosConfigurations = mapAttrs' mkSystem {
-        worklt = { };
+        mdaviswlt = { };
         wsl = { };
       };
 

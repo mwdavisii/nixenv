@@ -8,18 +8,13 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
-
   fileSystems = {
     "/" = {
       device = "/dev/disk/by-label/nixos";
       fsType = "ext4";
     };
-    "/boot" = {
-      device = "/dev/disk/by-label/boot";
+    "/boot/efi" = {
+      device = "/dev/disk/by-label/BOOT";
       fsType = "vfat";
     };
   };
